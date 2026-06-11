@@ -1,207 +1,272 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Perfiles Destacados</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aguacates Premium</title>
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f0f4f8;
-    }
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-    header {
-      background-color: #1e88e5;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
+<style>
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui, sans-serif;
+}
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
+/* 🌿 FONDO GLOBAL */
+body{
+background:
+linear-gradient(120deg, rgba(0,0,0,.70), rgba(0,0,0,.60)),
+url('https://i.pinimg.com/originals/65/5c/a8/655ca8655adafb524d2157237b13316f.jpg');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+background-repeat:no-repeat;
 
-    .profile-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
+color:white;
+overflow-x:hidden;
+}
 
-    .profile-card:hover {
-      transform: translateY(-5px);
-    }
+/* ANIMACIÓN */
+@keyframes fadeUp {
+from {opacity:0; transform:translateY(30px);}
+to {opacity:1; transform:translateY(0);}
+}
 
-    .profile-img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      display: block;
-    }
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
 
-    .profile-info {
-      padding: 1.2rem;
-    }
+.hero-content{
+max-width:850px;
+animation:fadeUp 1s ease;
+}
 
-    .profile-info h2 {
-      margin: 0 0 0.5rem 0;
-      color: #333;
-      font-size: 1.4rem;
-    }
+.hero h1{
+font-size:70px;
+font-weight:800;
+}
 
-    .profile-info p {
-      margin: 0.3rem 0;
-      color: #555;
-      font-size: 0.95rem;
-    }
+.hero p{
+font-size:22px;
+opacity:.9;
+margin-top:15px;
+}
 
-    section.info {
-      background-color: #ffffff;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto 3rem auto;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
+/* BOTÓN */
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 40px;
+background:linear-gradient(90deg,#00d4ff,#00ff88);
+color:black;
+font-weight:bold;
+border-radius:50px;
+text-decoration:none;
+transition:.3s;
+}
 
-    section.info h2 {
-      text-align: center;
-      color: #1e88e5;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
+.btn:hover{
+transform:scale(1.05);
+}
 
-    section.info h3 {
-      color: #1e88e5;
-      margin-top: 1.5rem;
-    }
+/* SECCIONES */
+section{
+padding:90px 10%;
+animation:fadeUp 1s ease;
+background:rgba(0,0,0,0.15);
+backdrop-filter:blur(6px);
+}
 
-    section.info p, section.info ul {
-      font-size: 1rem;
-      color: #444;
-      line-height: 1.6;
-    }
+/* TITULO */
+.titulo{
+text-align:center;
+font-size:42px;
+margin-bottom:50px;
+}
 
-    section.info ul {
-      padding-left: 1.2rem;
-    }
+/* INFO */
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
 
-    .video-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-    }
+.card{
+background:rgba(255,255,255,.10);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.2);
+padding:30px;
+border-radius:20px;
+transition:.3s;
+text-align:center;
+}
 
-    .video-container iframe {
-      width: 100%;
-      max-width: 720px;
-      height: 405px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
+.card:hover{
+transform:translateY(-12px);
+}
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
+/* 🕯️ ICONOS ESTILO VELITAS */
+.card i{
+font-size:42px;
+color:#ffd27d;
+margin-bottom:20px;
+}
 
-      .profile-info h2 {
-        font-size: 1.2rem;
-      }
+/* GALERÍA */
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
 
-      .profile-img {
-        aspect-ratio: 4 / 3;
-      }
+.galeria img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:18px;
+transition:.3s;
+}
 
-      .video-container iframe {
-        height: 240px;
-      }
-    }
-  </style>
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+/* DESCRIPCIÓN */
+.descripcion{
+max-width:1000px;
+margin:auto;
+text-align:center;
+line-height:1.9;
+font-size:18px;
+background:rgba(255,255,255,.06);
+padding:40px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.15);
+}
+
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+right:25px;
+bottom:25px;
+width:75px;
+height:75px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:38px;
+color:white;
+text-decoration:none;
+box-shadow:0 0 25px rgba(0,0,0,.5);
+transition:.3s;
+}
+
+.whatsapp:hover{
+transform:scale(1.15);
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+background:rgba(0,0,0,.6);
+}
+
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Controlador de Temperatura</h1>
-  </header>
+<section class="hero">
+<div class="hero-content">
+<h1>Amarres para tu pareja </h1>
+<p>te ayudamos con amarres para todo tipo de persona a conseguir prosperidad y dinero en tu hogar</p>
 
-  <section class="container">
-    <!-- Perfil 1 -->
-    <div class="profile-card">
-      <img src="https://cdn.discordapp.com/attachments/1269403006365991065/1395195997935636480/Imagen_de_WhatsApp_2025-07-16_a_las_18.57.42_0313efeb.jpg?ex=68799107&is=68783f87&hm=ae04bf1ec8a88a6c30cad39fad51ba1f7c78cc3348d7e1c34039e12be4094612&" alt="Persona 1" class="profile-img">
-      <div class="profile-info">
-        <h2>America Aguirre</h2>
-        <p><strong>Profesión:</strong> Diseñadora UX/UI</p>
-        <p><strong>Ciudad:</strong> Medellín, Colombia</p>
-        <p><strong>Correo:</strong> guerraganem@gmail.com</p>
-      </div>
-    </div>
+<a href="#info" class="btn">Ver más</a>
+</div>
+</section>
 
-    <!-- Perfil 2 -->
-    <div class="profile-card">
-      <img src="https://cdn.discordapp.com/attachments/1269403006365991065/1395196888508010559/Imagen_de_WhatsApp_2025-07-16_a_las_19.10.32_5359f3db.jpg?ex=687991db&is=6878405b&hm=47a85919c84dab849ade6f30fb1775e7da6631437443aaa46d2a9597d0f70b10&" alt="Persona 2" class="profile-img">
-      <div class="profile-info">
-        <h2>Matías Álvarez</h2>
-        <p><strong>Profesión:</strong> Ingeniero de Software</p>
-        <p><strong>Ciudad:</strong> Medellín, Colombia</p>
-        <p><strong>Correo:</strong> Alvarezmatias785@gmail.com</p>
-      </div>
-    </div>
+<section id="info">
+<h2 class="titulo">Información</h2>
 
-    <!-- Perfil 3 -->
-    <div class="profile-card">
-      <img src="https://cdn.discordapp.com/attachments/1269403006365991065/1395204301168836708/image.png?ex=687998c3&is=68784743&hm=dc22280a429b42c0e65a503dba96884017d9637f05349514f8ae1f0d9ae6b014&" alt="Persona 3" class="profile-img">
-      <div class="profile-info">
-        <h2>salome González</h2>
-        <p><strong>Profesión:</strong> Psicóloga Organizacional</p>
-        <p><strong>Ciudad:</strong> Medellín, Colombia</p>
-        <p><strong>Correo:</strong> ninguno</p>
-      </div>
-    </div>
-  </section>
+<div class="info-grid">
 
-  <!-- Sección de presentación del proyecto -->
-  <section class="info">
-    <h2>📱 Aplicación de Monitoreo de Temperatura</h2>
-    <p>
-      <strong>ThermoSmart</strong> es una innovadora aplicación móvil diseñada para <strong>medir y monitorear la temperatura en tiempo real</strong>.
-    </p>
-    <h3>🎯 Presentación del Proyecto</h3>
-    <p>
-      Ideal para aplicaciones médicas, ambientales y de mantenimiento industrial.
-    </p>
-    <h3>🌟 Beneficios Clave</h3>
-    <ul>
-      <li>✅ Medición precisa y en tiempo real</li>
-      <li>✅ Compatible con múltiples tipos de sensores</li>
-      <li>✅ Fácil de usar desde el celular o PC</li>
-      <li>✅ Notificaciones en caso de temperaturas anormales</li>
-      <li>✅ Registro de historial para análisis</li>
-    </ul>
-  </section>
+<div class="card">
+<i class="fas fa-fire"></i>
+<h3>Trabajo emocional y psicológico </h3>
+<p>con la intención de manipular los sentimientos y la voluntad de otra persona estos amarres pueden unir a dos personas emocional o sexualmente, y a menudo se utilizan para atraer el amor o mantener a una pareja cerca.</p>
+</div>
 
-  <!-- Video -->
-  <section class="video-container">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-  </section>
+<div class="card">
+<i class="fas fa-burn"></i>
+<h3>te ayudamos a desahacer un amarre </h3>
+<p>La detección de un amarre con brujería puede ser complicada, ya que los síntomas pueden confundirse con problemas de relación comunes o desafíos personales.
+
+Sin embargo, hay ciertos signos que podrían indicar que alguien está bajo la influencia de un amarre.
+
+Algunos de estos signos incluyen cambios repentinos en el comportamiento, obsesión extrema por una persona en particular, pérdida de interés en actividades previas, bloqueo emocional o sentimientos de estar “atrapado”..</p>
+</div>
+
+<div class="card">
+<i class="fas fa-burn"></i>
+<h3>limpieza y protección </h3>
+<p>Realizar rituales de limpieza y protección energética puede ser útil para eliminar cualquier influencia negativa y fortalecer tu campo energético.
+
+Esto puede incluir el uso de hierbas, como el romero o la salvia, así como la creación de un espacio sagrado para ti.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2 class="titulo">pruebas de nuestro trabajo</h2>
+
+<div class="galeria">
+
+<img src="https://media.discordapp.net/attachments/1514431735847321652/1514431759792603166/image.png?ex=6a2b57fc&is=6a2a067c&hm=335c1e50b9fca1e817745468355530a18a3ec012c092c6f57e991a86be6172c1&=&format=webp&quality=lossless&width=675&height=900" alt="Aguacate1">
+<img src="https://cdn.discordapp.com/attachments/1514431735847321652/1514432288690143295/image.png?ex=6a2b587a&is=6a2a06fa&hm=4f255d2f5392e62363b231346a5a83e11ee062a414d7ff27f436966c0d0ffbc7&" alt="Aguacate2">
+<img src="https://tse4.mm.bing.net/th/id/OIP.9BhUxLJa9QEVRVdIpu4owQHaHa?r=0&cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Aguacate3">
+
+</div>
+</section>
+
+<section>
+<h2 class="titulo">¿Quiénes Somos?</h2>
+
+<div class="descripcion">
+¿Qué hacemos?
+
+Ofrecemos orientación personalizada para personas que atraviesan situaciones sentimentales complejas y desean terner mejorarla atreves de amarre te ayudamos a que esa persona siempre este apegada a ti para siempre 
+
+ brindando atención cercana, discreta y adaptada a las necesidades de cada persona. Entendemos que las relaciones pueden pasar por momentos difíciles, por lo que proporcionamos  orientación para ayudar a encontrar claridad
+
+Trabajamos con compromiso, respeto y confidencialidad, ofreciendo una atención profesional para quienes buscan apoyo en temas relacionados con el amor, o otras cosas 
+
+Cada consulta es atendida de forma personalizada, para poder realizar una buena atención escríbenos al WhatsApp y te ayudaremos con tus amarres 100% garantizados 10 años de experiencia 
+</div>
+
+</section>
+
+<a class="whatsapp" href="https://wa.me/qr/D34MEH54NOZRO1" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+© 2026 Aguacates Premium
+</footer>
 
 </body>
 </html>
